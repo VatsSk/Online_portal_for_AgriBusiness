@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Farmer Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      display: flex;
+    }
+    .sidebar {
+      width: 0;
+      background-color: #333;
+      color: rgb(10, 21, 44);
+      padding: 20px;
+      position: fixed;
+      height: 100%;
+      overflow-y: auto;
+      transition: width 0.5s;
+    }
+    .main-content {
+      margin-left: 125px;
+      padding: 20px;
+      transition: margin-left 0.5s;
+      padding-left: 80pxpx;
+    }
+    h1 {
+      text-align: center;
+    }
+    .section-title {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    .profile-details, .add-product-form, .transaction-details, .transaction-history {
+      background-color: #f2f2f2;
+      padding: 20px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    input[type="text"], textarea {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+
+    }
+    
+    input[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+    .logout-btn {
+      background-color: #FF0000;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin-top: 10px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    .open-sidebar-btn {
+      background-color: #333;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin-top: 10px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="sidebar" id="sidebar">
+      <div class="profile-details">
+        <h2>Profile</h2>
+        <p>First Name: John</p>
+        <p>Last Name: Doe</p>
+        <p>Email: johndoe@example.com</p>
+        <p>Address: 123 Farmer's Lane</p>
+        <button class="logout-btn">Logout</button>
+      </div>
+      <div class="transaction-details">
+        <h2>Transaction Details</h2>
+        <p>Number of Companies Approached: 5</p>
+        <div class="transaction-history">
+          <h2>Transaction History</h2>
+          <p>No transactions yet.</p>
+        </div>
+      </div>
+    </div>
+    <div class="main-content" id="main-content">
+      <button class="open-sidebar-btn" onclick="toggleSidebar()">Open Sidebar</button>
+      <h1>Welcome to Your Dashboard, Farmer!</h1>
+      
+      <div class="add-product-section">
+        <div class="section-title">Add Product</div>
+        <div class="add-product-form">
+          <form>
+            <label for="product-name">Product Name:</label>
+            <input type="text" id="product-name" name="product-name" placeholder="Product name..">
+
+            <label for="product-description">Product Description:</label>
+            <textarea id="product-description" name="product-description" placeholder="Product description.." style="height:100px"></textarea>
+
+            <input type="submit" value="Add Product">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleSidebar() {
+      var sidebar = document.getElementById("sidebar");
+      var mainContent = document.getElementById("main-content");
+      if (sidebar.style.width === "200px") {
+        sidebar.style.width = "0";
+        mainContent.style.marginLeft = "0";
+      } else {
+        sidebar.style.width = "200px";
+        mainContent.style.marginLeft = "200px";
+      }
+    }
+  </script>
+</body>
+</html>

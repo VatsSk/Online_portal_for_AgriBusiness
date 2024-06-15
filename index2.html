@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Page</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0;
+    }
+    .container {
+        width: 100%;
+        max-width: 400px;
+        margin: 100px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+    h2 {
+        color: #00b300;
+    }
+    input[type="text"],
+    input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+    input[type="submit"] {
+        width: 100%;
+        background-color: #00b300;
+        color: #fff;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    input[type="submit"]:hover {
+        background-color: #008000;
+    }
+    .options {
+        margin-top: 20px;
+    }
+    .options label {
+        margin-right: 10px;
+        color: #666;
+    }
+    .options input[type="radio"] {
+        display: none;
+    }
+    .options input[type="radio"] + label {
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .options input[type="radio"]:checked + label {
+        background-color: #00b300;
+        color: #fff;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h2>Login</h2>
+    <div class="options">
+        <input type="radio" id="buyer" name="login_type" checked>
+        <label for="buyer">Login as Buyer</label>
+        <input type="radio" id="supplier" name="login_type">
+        
+        <label for="supplier">Login as Supplier</label>
+       
+       
+    </div>
+    <br>
+    <form action="#" method="post">
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <input type="submit" value="Login">
+    </form>
+
+<br>
+<div>
+<pre style="font-size: 15px; text-decoration: none;"><a href="#">Forgot Password?</a>  
+    <a href="registration.html">Register</a></pre>
+</div> 
+</div>
+</body>
+</html>

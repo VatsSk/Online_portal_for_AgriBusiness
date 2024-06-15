@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buyer Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Custom CSS */
+        /* You can add your own custom styles here */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        header {
+            background-color: #076b0b;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .card {
+            margin-bottom: 20px;
+        }
+
+        .card-header {
+            background-color: #469949;
+            color: white;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .btn-logout {
+            background-color: #dc3545;
+            color: rgb(17, 1, 1);
+            border: none;
+        }
+
+        .btn-logout:hover {
+            background-color: #c82333;
+            color: white;
+        }
+
+        .btn-settings {
+            background-color: #17a2b8;
+            color: rgb(26, 3, 3);
+            border: none;
+        }
+
+        .btn-settings:hover {
+            background-color: #138496;
+            color: white;
+        }
+
+        .btn-edit-profile {
+            background-color: #ffc107;
+            color: rgb(70, 61, 61);
+            border: none;
+        }
+
+        .btn-edit-profile:hover {
+            background-color: #e0a800;
+            color: rgb(197, 79, 79);
+        }
+
+        .btn-save-profile {
+            background-color: #28a745;
+            color: white;
+            border: none;
+        }
+
+        .btn-save-profile:hover {
+            background-color: #218838;
+            color: rgb(189, 50, 50);
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #2a802d;
+            color: #f5f9fc;
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer ul {
+            padding: 0;
+            list-style: none;
+        }
+
+        footer ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        footer ul li a {
+            color: #f8f9fb;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        footer ul li a:hover {
+            color: #d1d1d3;
+        }
+
+        /* Menu bar styles */
+        nav {
+            background-color: #343a40;
+            padding: 10px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-right: 15px;
+        }
+
+        nav a:hover {
+            color: #b3b3b3;
+        }
+
+        /* Profile photo styles */
+        .profile-photo {
+            
+            margin-bottom: 5px;
+        }
+
+        .profile-photo img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            padding:1px;
+        }
+
+        /* Vertical dashboard layout */
+        .vertical-layout {
+            display: flex;
+            flex-direction: row; /* Changed to row */
+            height: 100vh; /* Full height of viewport */
+        }
+
+        .sidebar {
+            width: 200px;
+            background-color: hwb(135 96% 2%); /* Changed background color */
+            padding: 1px;
+        }
+
+        .main-content {
+            flex: 1; /* Expand to fill remaining space */
+            padding: 20px;
+        }
+
+        /* Sidebar menu styles */
+        .sidebar-menu {
+            margin-bottom: 2px;
+        }
+
+        .sidebar-menu a {
+            display: block;
+            color: #010212;
+            padding: 10px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .sidebar-menu a:hover {
+            background-color: #b1b2b4;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="bg-success text-white py-4">
+        <div class="container">
+            <h1>  Farmer Dashboard</h1>
+        </div>
+    </header>
+
+    <div class="container vertical-layout">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="profile-photo">
+                <img src="https://via.placeholder.com/150" alt="Profile Photo">
+            </div>
+            <div class="sidebar-menu">
+                <a href="#" class="text-decoration-none">Home</a>
+                <a href="#" class="text-decoration-none">Products</a>
+                <a href="#" class="text-decoration-none">Orders</a>
+                <a href="#" class="text-decoration-none">Payments</a>
+                <a href="#" class="text-decoration-none">Settings</a>
+                <a href="#" class="text-decoration-none">Logout</a>
+            </div>
+        </div>
+        <!-- Main content -->
+        <div class="main-content">
+            
+            <div class="dashboard-content">
+                <div class="card">
+                    <div class="card-header">
+                        Profile
+                        <button class="btn btn-sm btn-edit-profile ml-2">Edit</button>
+                        <button class="btn btn-sm btn-save-profile ml-2" style="display: none;">Save</button>
+                    </div>
+                    <div class="card-body">
+                        <!-- Profile content goes here -->
+                        <form id="profileForm" class="needs-validation" novalidate>
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" class="form-control" id="name" name="name" value="John Doe"
+                                    required disabled>
+                                <div class="invalid-feedback">
+                                    Please enter your name.
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" class="form-control" id="email" name="email"
+                                    value="john@example.com" required disabled>
+                                <div class="invalid-feedback">
+                                    Please enter a valid email address.
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="address">Address</label>
+                                <input type="text" class="form-control" id="address" name="address"
+                                    value="123 Main St, City, Country" required disabled>
+                                <div class="invalid-feedback">
+                                    Please enter your address.
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        Order History
+                    </div>
+                    <div class="card-body">
+                        <!-- Order history content goes here -->
+                        <p>No orders yet.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        Payment History
+                    </div>
+                    <div class="card-body">
+                        <!-- Payment history content goes here -->
+                        <p>No payments yet.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="container">
+            <ul>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+            </ul>
+            <p>&copy; 2024 AgriPortal. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // JavaScript code for handling actions
+        $(document).ready(function () {
+            // Logout button click event
+            $('.btn-logout').click(function () {
+                // Implement logout functionality here
+                // For example, redirect to logout page or clear session
+                alert('Logged out successfully.');
+            });
+
+            // Edit profile button click event
+            $('.btn-edit-profile').click(function () {
+                // Enable profile fields for editing
+                $('#profileForm input').prop('disabled', false);
+                // Show save button and hide edit button
+                $('.btn-save-profile').show();
+                $(this).hide();
+            });
+
+            // Save profile button click event
+            $('.btn-save-profile').click(function () {
+                // Validate profile form
+                if ($('#profileForm')[0].checkValidity()) {
+                    // Disable profile fields
+                    $('#profileForm input').prop('disabled', true);
+                    // Hide save button and show edit button
+                    $('.btn-edit-profile').show();
+                    $(this).hide();
+                    // Implement save profile functionality here
+                    // For example, send AJAX request to update profile on server
+                    alert('Profile saved successfully.');
+                } else {
+                    // If form is invalid, prevent default form submission
+                    event.preventDefault();
+                    event.stopPropagation();
+                    // Mark invalid fields
+                    $('#profileForm').addClass('was-validated');
+                }
+            });
+
+            // Settings button click event
+            $('.btn-settings').click(function () {
+                // Implement settings functionality here
+                alert('Settings clicked. Implement your settings logic here.');
+            });
+        });
+    </script>
+</body>
+
+</html>

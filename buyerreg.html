@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buyer Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: white;
+        }
+
+        header {
+            background-color: #a2c183;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 20px auto;
+            background-color: #e2f2cb;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            height: 1300px;
+        }
+
+         /* h2 {
+            text-align: center;
+        } */
+        form {
+            width: 80%;
+            margin: 0 auto;
+        } 
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="number"], 
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        input[type="submit"],
+        input[type="reset"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            float: right;
+            margin-right: 10px;
+        }
+
+        input[type="submit"]:hover,
+        input[type="reset"]:hover {
+            background-color: #45a049;
+        }
+
+        select[multiple] {
+            height: auto !important;
+        }
+
+        .container.required label:after {
+            content: "*";
+            color: red;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #cbe1a6;
+            color: #3985be;
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        footer ul {
+            padding: 0;
+            list-style: none;
+        }
+
+        footer ul li {
+            display: inline;
+            margin-right: 10px;
+            margin-bottom: 20px;
+        }
+
+        footer ul li a {
+            color: #3985be;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        footer ul li a:hover {
+            color: #b3c7ed;
+        }
+        #password{
+            height: 35px;
+            width: 570px;
+            border-radius: 5px;
+            border-color: white;
+        }
+        #confirm_password{
+            height: 35px;
+            width: 570px;
+            border-radius: 5px;
+            border-color: white;
+        }
+        
+    </style>
+</head>
+
+<body id="registrationForm">
+    <header>
+        <h1>Buyer Registration</h1>
+    </header>
+    <div class="container" onsubmit="return validate()">
+        <form action="#" method="post">
+            <div class="form-group required">
+                <label for="buyerType">Buyer Type:</label>
+                <select id="buyerType" name="buyerType" required>
+                    <option value="">Select Buyer Type</option>
+                    <option value="company">Company</option>
+                    <option value="proprietorship">Proprietorship</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="companyName">Company Name:</label>
+                <input type="text" id="companyName" name="companyName" placeholder="ABC Farms Pvt. Ltd."
+                    required>
+            </div>
+            <!-- <div class="form-group">
+                <label for="buyerName">Name:</label>
+                <input type="text" id="buyerName" name="buyerName" placeholder="name" required>
+            </div> -->
+            <div class="form-group ">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required placeholder="Username" >
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required placeholder="Farmer@123" >
+            </div>
+            <div class="form-group">
+                <label for="confirm_password">Confirm Password</label>
+                <input type="password" id="confirm_password" name="confirm_password" required placeholder="Farmer@123" onkeyup="check(this)">
+                <error id="chError" style="color: red;"></error>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Example: xyz@example.com" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone:</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+            <div class="form-group">
+                <label for="gstNumber">GST Number:</label>
+                <input type="text" id="gstNumber" name="gstNumber" placeholder="Example: 12ABCDE3456F7GH" required>
+            </div>
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <input type="text" id="address" name="address" required>
+            </div>
+            <div class="form-group">
+                <label for="city">City:</label>
+                <input type="text" id="city" name="city" placeholder="" required>
+            </div>
+            <div class="form-group">
+                <label for="state">State:</label>
+                <input type="text" id="state" name="state" placeholder="" required>
+            </div>
+            <div class="form-group">
+                <label for="zip">ZIP Code:</label>
+                <input type="number" id="zip" name="zip" placeholder="Example: 10001" required>
+            </div>
+            <div class="form-group">
+                <label for="productType">Needed Product Type:</label>
+                <select id="productType" name="productType[]" multiple required>
+                    <option value="vegetables">Vegetables</option>
+                    <option value="fruits">Fruits</option>
+                    <option value="grains">Grains</option>
+                    <option value="dairy">Dairy Products</option>
+                    <option value="meat">Meat</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input id="regBtn" type="submit" value="Register" >
+                <input type="reset" value="Clear">
+            </div>
+        </form>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="container">
+            <ul>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+            </ul>
+            <p>&copy; 2024 AgriPortal. All rights reserved.</p>
+        </div>
+    </footer>
+    <script type="module" src="buyerReg.js" ></script>
+    <script type="text/javascript" src="buyerRegVal.js"></script>
+</body>
+</html>
